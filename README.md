@@ -1,12 +1,16 @@
-# kabu
+# kabukabu
 
-Kabukabu ride sharing
+Kabukabu - Soon to be a ridesharing app built for rural locations
 
-## Getting Started
+## Brief Breakdown
 
-This project is a starting point for a Flutter application.
+This project is built on Flutter and is a bit of a passion project for me and my Uncle.
+
+I'll leave the rest of this stuff as is if I ever need it later. Feel free to peruse :)
 
 A few resources to get you started if this is your first Flutter project:
+
+#
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
