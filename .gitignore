@@ -1,4 +1,5 @@
 .gradle
+.json
 /build/
 /android/app/src/main/AndroidManifest.xml
 # Ignore Gradle GUI config
