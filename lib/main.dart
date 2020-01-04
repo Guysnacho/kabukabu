@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-
+import 'dart:async';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -21,6 +20,7 @@ class MyApp extends StatelessWidget {
         '/SignUp': (context) => SignUp(),
         '/Login': (context) => LogIn(),
         '/dash': (context) => Dash(),
+        '/Settings': (context) => Settings(),
       },
     );
   }
@@ -444,8 +444,12 @@ class Dash extends StatefulWidget{
 
 class _DashState extends State<Dash>{
   TextStyle style = TextStyle(fontFamily: 'Expletus Sans regular', fontSize: 20);
-  //Completer<GoogleMapController> _controller = Completer();
+  Completer<GoogleMapController> _controller = Completer();
 
+  CameraPosition _kLake = CameraPosition(
+  target: LatLng(45.521563, -122.677433),
+  zoom: 11.0,
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -457,16 +461,7 @@ class _DashState extends State<Dash>{
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: GoogleMap(
-            mapType: MapType.hybrid,
-            initialCameraPosition: CameraPosition(
-              target: LatLng(45.521563, -122.677433),
-              zoom: 11.0,
-            ),
-            onMapCreated: (GoogleMapController controller){
-              //_controller.complete(controller);
-            },
-          ),
+          child: Image.network("https://firebasestorage.googleapis.com/v0/b/kabukabu-8ab46.appspot.com/o/Assets%2F5-512.png?alt=media&token=0861a73e-d7b6-47a7-b98c-a4afae4bf0e8"),
         ),
       ),
 
@@ -478,16 +473,15 @@ class _DashState extends State<Dash>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 DrawerHeader(
-                  child: Text('Username'),
+                  child: Text('Samuel Adetunji'),
                   decoration: BoxDecoration(
-                    color: Colors.pinkAccent,
+                    color: Colors.purpleAccent,
                   ),
                 ),
                 SizedBox(
-                  width: 25,
-                  height: 25,
+                  width: MediaQuery.of(context).size.width/4,
                   child: Image.network(
-                      "gs://kabukabu-8ab46.appspot.com/gr14upppv3z11.jpg",
+                      "https://firebasestorage.googleapis.com/v0/b/kabukabu-8ab46.appspot.com/o/Assets%2Fgr14upppv3z11.jpg?alt=media&token=f7429f47-d6ce-45ed-b35e-3f57c0bfdb21",
                       fit: BoxFit.fitHeight,
                   ),
                 ),
@@ -497,8 +491,14 @@ class _DashState extends State<Dash>{
               title: Text('Dashboard'),
               onTap: (){
                 //Update the state
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context,'/dash');
               },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap:(){
+                Navigator.pushNamed(context, '/Settings');
+              }
             ),
             ListTile(
               title: Text('History'),
@@ -510,6 +510,37 @@ class _DashState extends State<Dash>{
           ],
         )
       )
+    );
+  }
+}
+
+class Settings extends StatefulWidget{
+  @override
+  _SettingsState createState()=> _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  TextStyle style = TextStyle(
+      fontFamily: 'Expletus Sans regular', fontSize: 20);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
+        backgroundColor: Colors.purple[300],
+      ),
+
+      body: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 155.0,
+            child: Container(
+                child: Image.network("https://firebasestorage.googleapis.com/v0/b/kabukabu-8ab46.appspot.com/o/Assets%2F5-512.png?alt=media&token=0861a73e-d7b6-47a7-b98c-a4afae4bf0e8")
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
